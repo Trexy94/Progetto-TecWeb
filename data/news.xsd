@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+	elementFormDefault="qualified" >
+	
+	<xsd:element name="news" type="Tnews"/>
+		
+	<xsd:complexType name="Tnews">
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:element name="notizia" type="Tnotizia"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- definizione Tnotizia -->
+	<xsd:complexType name="Tnotizia">
+		<xsd:sequence>
+			<xsd:element name="img" type="xsd:string"/>
+      <xsd:element name="alt" type="xsd:string"/>
+			<xsd:element name="titolo" type="xsd:string"/> 
+			<xsd:element name="datainserimento" type="xsd:string"/>
+			<xsd:element name="testocontenuto" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="Tid" use="required"/>			
+	</xsd:complexType>
+
+	<!-- definisco Tid -->
+	<xsd:simpleType name="Tid">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="999999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

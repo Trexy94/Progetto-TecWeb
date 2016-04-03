@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" >
+	
+	<xsd:element name="utenti" type="Tutenti" />
+	
+	<!-- definizione Tutenti -->
+	<xsd:complexType name="Tutenti">
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:element name="utente" type="Tutente" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- definizione Tutente -->
+	<xsd:complexType name="Tutente">
+		<xsd:sequence>
+			<xsd:element name="username" type="xsd:string" />
+			<xsd:element name="password" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
