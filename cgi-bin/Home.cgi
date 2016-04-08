@@ -9,6 +9,8 @@ use XML::LibXML;
 use File::Copy;
 use utf8;
 use URI;
+use HTML::Parser;
+use HTML::Entities;
 # includo la mia libreria funzioni
 require ('libreria_funzioni.pl');
 
@@ -19,7 +21,7 @@ if(!($session->is_expired) || !($session->is_empty)){
 	# ricavo l'autenticazione
         $auth = $session->param('auth');
 }
-#basta controllare la stringa, perchè i non autenticati non hanno cookie e quindi dovrebbero conoscere la "magic word" e come è strutturato il login per craccarlo
+#basta controllare la stringa, perchÃ¨ i non autenticati non hanno cookie e quindi dovrebbero conoscere la "magic word" e come Ã¨ strutturato il login per craccarlo
 
 # recupero dal file news.xml i dati della news con id corretto
 my $file = "../data/news.xml";
@@ -88,12 +90,12 @@ print "<h3><a href=\"./aggiungi_notizia.cgi\">aggiungi notizia</a></h3>";
 # estrazione delle news
 my @news = $doc->findnodes("/news/notizia");
 @news=reverse(@news);
-#per avere le news dalla più recente alla più vecchia
+#per avere le news dalla piÃ¹ recente alla piÃ¹ vecchia
 # stampa delle news
 foreach my $notizia (@news){
 	my $img = $notizia->findvalue('img');
-        my $alt = $notizia->findvalue('alt');
-	my $titolo = $notizia->findvalue('titolo');
+        my $alt = decode_entities($notizia->findvalue('alt'));
+	my $titolo = decode_entities($notizia->findvalue('titolo'));
 	my $data = $notizia->findvalue('datainserimento');
         my $id = $notizia->getAttribute('id');
 		print "<div class= \"news\">
