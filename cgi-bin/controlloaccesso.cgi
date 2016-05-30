@@ -162,7 +162,7 @@ EOF
 			# controllo l'esistenza del cookie
 			my %cookie = CGI::Cookie->fetch;
 			my $cook = $cookie{'JCCA'};
-			my $cook2 = $cookie{'JCCA'};
+			my $cook2 = $cookie{'JCC'};
 			# se i 2 cookie fondamentali non sono presenti lo ricreo
 			if(!defined $cook){
 				# ricreo il cookie se mancante
